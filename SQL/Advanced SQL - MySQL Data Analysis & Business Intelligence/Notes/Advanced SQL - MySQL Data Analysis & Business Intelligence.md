@@ -1,0 +1,61 @@
+- https://www.udemy.com/course/advanced-sql-mysql-for-analytics-business-intelligence/learn/lecture/16450564?start=15#overview
+- ![](https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2FFemFarm%2F7fBTFeDE_g.png?alt=media&token=7ecd62e0-c4c4-47ae-a047-83fbdb8bc43f)
+- # Analyze Traffic Source
+    - ## WEBSITE_SESSIONS Table
+        - ### website_session_id [[website session]]
+            - This is the primary key of the website sessions table.
+            - [How Sessions work in Web Servers - YouTube](https://www.youtube.com/watch?v=5beyFcuTw20)
+            - [Real Life Examples: Sessions Vs. Users Vs. Pageviews - YouTube](https://www.youtube.com/watch?v=5NIcbKwu-wM)
+                - ![](https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2FFemFarm%2FIcEzedwChz.png?alt=media&token=dd14550d-f546-4b8a-b464-b896e60c1a98)
+                - ![](https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2FFemFarm%2Fv9LMP4NHTG.png?alt=media&token=673ccdf7-5bc9-450e-98e4-28d9f8de5d36)
+            - ![](https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2FFemFarm%2FAmnUzFLSwm.png?alt=media&token=0821d921-3baf-4681-bd60-79a01eeb1aba)
+        - ### created_at 
+            - timestamp, which is when that session happened.
+        - ### user_id
+            - that is linked to the cookie in a user's browser. We use that to track users across multiple sessions.
+        - ### is_repeat_session binary flag
+            - So this is going to be a zero or a one, depending on whether or not this customer has been to the website before and that's identified.
+        - **UTM Tracking parameters** that we use to measure our paid marketing activity.#[[UTM Tracking parameters]]
+            - UTM campaign
+            - UTM content.
+            - UTM source
+            - So when you see UTM parameters, this is what's used by **Google Analytics.**
+            - And many ecommerce companies have adopted similar tracking conventions for their own internal database
+            - so that you can use one set of parameters for both the Google Analytics implementation and for the internal database.
+        - **device_type**
+            - So device type helps us understand whether the user is on their computer or if they're on a mobile device
+        - **http_refer** helps us understand where traffic is coming from.
+            - This can be especially helpful for traffic that's coming to us, which we don't have tagged with paid tracking parameters because it's not through a marketing campaign.
+            - We can look at referrer as another way to try to figure out where that traffic is coming from.
+    - ## WEBSITE_PAGEVIEWS
+        - ![](https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2FFemFarm%2FAmnUzFLSwm.png?alt=media&token=0821d921-3baf-4681-bd60-79a01eeb1aba)
+        - [[conversion analysis]]， [[funnel analysis]]
+    - ## ORDERS
+        - **cog**: cost of goods
+        - we'll use that to understand revenue and to do [[margin analysis]] for our various products.
+        - **primary product**:  being the product that a customer puts in their cart.
+    - ## Traffic Source Analysis
+    - ## Bid Optimization
+    - ## Traffic Trending Analysis
+- # Analyze Website Performance
+    - ## ANALYZING TOP WEBSITE CONTENT
+        - ![SzH2Lx](https://testksj.oss-cn-beijing.aliyuncs.com/uPic/SzH2Lx.png)
+        - Website content analysis is about understanding which pages are seen the most by your users, to identify where to focus on improving your business
+        - COMMON USE CASES: 
+            - Finding the most-viewed pages that customers view on your site 
+            - Identifying the most common entry pages to your website – the first thing a user sees 
+            - For most-viewed pages and most common entry pages, understanding how those pages perform for your business objectives
+    - ## LANDING PAGE PERFORMANCE&TESTING
+        - ![](https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2FFemFarm%2FV0DbuHx4xg.png?alt=media&token=9e101b79-5cbb-4cd0-b984-e0444309cd3a)
+        - **COMMON USE CASES:**
+            - Identifying your top opportunities for landing pages – [[high volume pages]] with higher than expected [[bounce rates]] or low [[conversion rates]] .
+            - Setting up [[A/B test]] experiments on your live traffic to see if you can improve your bounce rates and conversion rates 
+            - Analyzing test results and making recommendations on which version of landing pages you should use going forward
+        - ![](https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2FFemFarm%2FuG2zaB4buu.png?alt=media&token=4b210862-08d5-452a-9772-9d2ea4df03d1)
+            - [[~SQL]]
+                - ```sql
+Solution is a multi-step a query. See video for details
+STEP 1: finding the first website_pageview_id for relevant sess ions
+STEP 2: identifying the landing page of each session
+STEP 3: counting pageviews for each sess ion, to identify "bounces™
+STEP 4: summarizing by counting total sessions and bounced sess ions```
