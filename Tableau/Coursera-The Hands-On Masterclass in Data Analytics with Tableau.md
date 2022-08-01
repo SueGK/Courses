@@ -1,0 +1,68 @@
+- Count and Countd
+    - countd stands for count distinct
+- Dimensions and Measures?
+    - Dimensions: qualitative
+    - measures: quantitative
+    - when should you put in dimensions part or measures?
+        - 0/1 number 分类变量
+            - Put in the dimensions section then you drag to the Columns/Rows, then you can get
+                - #make:wide ![](https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2FFemFarm%2FvvzRsBbfEa.png?alt=media&token=4e3a14cd-1501-4267-96ca-5dd7d21ca95c) 
+            - For measures
+                - #make:wide![](https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2FFemFarm%2FYbO0GRwm-F.png?alt=media&token=cb29331c-d860-49cb-8dd8-705be10a4d53)
+- [[Tableau Colour]]
+    - 根据分类的颜色改变图表标题的颜色 #[[Data/Visualization]]
+        - ![](https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2FFemFarm%2FfPSkFX2eLQ.png?alt=media&token=9dc92cc1-f92c-4436-8f6a-7b49c9c0e6c0)
+- [[Data/Chart]] in [[Tableau]]
+    - [[Chart/Packed Bubble Chart]]
+        - 分类变量放在ROWS，将COUNT放在LABLE，出现表格，然后选择SHOW ME的BUBBLE CHART
+            - ![](https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2FFemFarm%2FYKHkA6gMXt.png?alt=media&token=10dd54a4-ca7f-4ef6-9c44-f9184569318c) ![](https://testksj.oss-cn-beijing.aliyuncs.com/uPic/FxXJH3.png)
+    - [[Chart/Pie chart]]
+        - ![](https://testksj.oss-cn-beijing.aliyuncs.com/uPic/730MM5.png) ![](https://testksj.oss-cn-beijing.aliyuncs.com/uPic/CleanShot%202022-03-23%20at%2005.55.54.png)
+            - 分类放在colour marks
+            - 记录数放在angle marks
+    - [[Chart/Bar chart]]
+        - 想要选中top10 - Create a [[set variable]]
+            - ![](https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2FFemFarm%2FJkzUciuZ4L.png?alt=media&token=2c8dd820-e1e4-42ad-8c0f-bc0289499d06)
+            - ![](https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2FFemFarm%2Fn90ZQPobGh.png?alt=media&token=b162e7a5-40e2-4f41-8ce7-5f1442ff4e01)
+            - {{[[TODO]]}} Resources:: [Introduction to Linear Regression](https://onlinestatbook.com/2/regression/intro.html) #[[Linear Regression]]
+    - [[Chart/Line graph]]
+        - ![](https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2FFemFarm%2FEof425TExA.jpeg?alt=media&token=049b5a0d-9874-4d8c-897c-f6a2ea919c63)
+        - 当发现多个job groups缺失2008年数据时，我们可以使用filter来选中2009年以及之后的数据
+            - ![dtw6UW](https://testksj.oss-cn-beijing.aliyuncs.com/uPic/dtw6UW.png)
+            - 
+        - always remember to look at **axis**
+            - ![](https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2FFemFarm%2FddQNCy6ylf.png?alt=media&token=2ad38974-a92b-44c9-9e35-818ba3108744)
+            - 视觉上看line 3波动更大，但看看axis，实际上line 2波动更大
+            - 分析median随时间的变化，同时可以查看max/min随时间的变化#数据分析tip
+数据相关工作整体工资稳定，最高工资逐渐升高而最低工资逐年降低
+            - edit all trend lines - uncheck "Allow a trend line per colour"
+                - ![](https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2FFemFarm%2FrQKAXQOuUh.png?alt=media&token=686ba7cb-0c16-4e55-9fe5-1894cef7ffb2)
+    - [[Chart/Box plot]]
+        - ^^分析box plot的时候不仅要关注median变化，也要关心max/min变化^^
+            - The box shows you where 50%  of your data is. 25% of your data is above/below the 箱子上下顶. Its clear that over time, there are more and more salaries that have lower and lower values. There are also more and more salaries that have higher values. So although the median doesnt seem to be changing all that much, It seems to be increasingly possible to get both a higher wage, and a lower wage than the median.
+                - data scientist
+![](https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2FFemFarm%2FzkY_uu3J0p.png?alt=media&token=54269254-b014-42c5-b324-5f4642280ac5)
+            - **对比分析时要注意设置相同的AXIS**
+                - Software engineer
+![](https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2FFemFarm%2F7S_Fs-6e4M.png?alt=media&token=782efff2-c203-4a80-b52d-afbb8fe1c99b)
+                - engineer outlier 较大，高达1400K，为了和data scientist对比，右键edit axis设置为相同的300000
+                    - ![](https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2FFemFarm%2F39V2Eglvvd.png?alt=media&token=9b642dc0-6ed0-423a-9801-229413f83527)
+        - Conclusion
+            - And we know right away when we do this we're gonna be cutting out some data, or be cutting out some of the outliers. But it will let us compare most of the data more carefully. So now, when you look at this, you see that there are indeed more and more salaries that are below the median or below that first quartile. But doesn't seem quite as bad as for the data scientist. On the other hand, there seem to be more and more very high paid software engineers. Let's go back and look at data scientists using the same axis. And you'll see that indeed, there seems to be this trend of lower and lower, minimum wages seems to be stronger and you definitely don't see as many outliers for the data scientists.
+            - overall, because these plots show more data, even though they don't have the statistical model associated with them like our nest fit line did. They show even more convincingly than the line graphs that we saw in the last video, that there might be an increasing amount of opportunity to be awarded with very high salaries and data related jobs as time goes on. But there also might be increased risk that you'll make less than you expected, especially if the data analyst and business analyst jobs and the new trend from 2015 continues.
+            - 总的来说，因为这些图显示了更多的数据，尽管它们没有像我们的嵌合线那样有相关的统计模型。它们比我们在上一个视频中看到的线图更有说服力，随着时间的推移，可能会有越来越多的机会获得非常高的薪水和数据相关的工作。但也可能会有越来越多的风险，你会赚得比你预期的少，特别是如果数据分析师和商业分析师的工作和2015年的新趋势继续下去。
+- Hierarchy
+    - Tables section选中一个drag到想构建层级的value, 可选中+符号展开层级
+        - ![](https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2FFemFarm%2FFaYivbdjOT.png?alt=media&token=78b76a1b-7369-45c6-800e-88327a4175b1)
+- Detail tables
+    - 建立新的可下载的详细表格
+^^**dimensions drag to the ROWS，measures double click or drag to the text mark**^^
+    - 点击dashboard-action
+- Reference Line
+    - ![](https://testksj.oss-cn-beijing.aliyuncs.com/uPic/aQg5io.png)
+- Duplicate as Crosstab
+    - ![](https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2FFemFarm%2FGf_914vETB.png?alt=media&token=9aa94845-a36f-481b-946b-0b37d7c4a491)
+- 快捷Tips
+    - 拖拽时按住shift可直接从column移动到marks
+- Problems
+    - excel中 currency自带有货币符号or逗号间隔，导致tableau默认为string，直接在tableau转换为int时会返回null value。需要对数据进行处理  #[[Data cleaning]]

@@ -1,0 +1,67 @@
+- Projects
+    - [[Project todo]] #High
+        - {{[[DONE]]}} Difference from [[population standard deviation]] and [[standard deviation]]?
+            - ![](https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2FFemFarm%2FCLSPr28M7M.png?alt=media&token=c056f875-2c18-4ea6-988e-4765b8f6a223)
+            - Higher [[standard deviation]] probably means you have some extreme [[outliers]] in your data #数据分析tip #[[Data cleaning]]
+                - How to check for [[outliers]]? 
+                    - [[Chart/Scatter plot]]
+                        - How to change bar chart to scatter plot in [[Tableau]]? - Choose Analysis - uncheck **Aggregate Measures**
+                            - ![WTymlv](https://testksj.oss-cn-beijing.aliyuncs.com/uPic/WTymlv.png)
+                            - ![](https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2FFemFarm%2FUYlKQBmRUC.png?alt=media&token=a7f77e6a-7297-4d8e-b1ab-a1ef7181c58b)
+                            - 如图可发现Attorney有outliners，鼠标框选所有outliners，右键view data-full data，分析具体原因
+                            - 
+                - How to remove [[outliers]] in [[Tableau]]
+                    - 1. Add a filter to set threshold，比如数据小于某个number
+                    - 2. Create a outliner group - 可添加unique的 case number on Detail mark， 鼠标选中outliners后右键按照case number来group，然后添加group variable为filter
+                        - ![f22mdn](https://testksj.oss-cn-beijing.aliyuncs.com/uPic/f22mdn.png)
+                        - ![](https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2FFemFarm%2F2K_PImdznR.png?alt=media&token=ea59c4e6-89de-49f4-8a34-ec081e75aa1a)
+        - [Data Visualization and Communication with Tableau Quiz Answers](https://networkingfunda.com/data-visualization-and-communication-with-tableau-quiz-answers/)
+            - {{[[DONE]]}} week1 Asking The "Right Questions"
+            - {{[[DONE]]}} week2 Data Visualization with Tableau
+            - {{[[DONE]]}} week3 Dynamic Data Manipulation and Presentation in Tableau
+            - {{[[DONE]]}} week4 Your [[Communication Skill]] Toolbox: Visualizations, Logic, and Stories
+            - {{[[DONE]]}} week5 Final Project
+- Keywords:: [[Data/Visualization]] #[[Data Visualization/Tableau]] #Cousera
+    - filter county/state/city的时候，发现有些地点用的是缩写，有些是全名，需要[[Data cleaning]]
+        - 选中地点的measures变量，右键group，把地点相同的组合在一起
+    - raw数据处理，把measures变量里拉到rows栏，then de-aggregate, 会出现类似[[Chart/Box plot]]，观察是否有[[outliers]] #[[Data cleaning]] 
+        - As another quality check, place Sign in Count on the Rows shelf. Then **de-aggregate the data** in the workspace through the “Analysis” menu. You will see that there are some clear outliers in this variable. If you right-click/CTRL-click on the individual data points to sce the raw data underlying them. note what columns of data seem to be common to all the rows displayed at this point. We will want to examine these outliers and possibly exclude them from future analyses.
+    - #数据分析思维
+        - ![](https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2FFemFarm%2Fbokq2tpjIP.png?alt=media&token=d58d118c-45d5-4c72-9574-d81b28dd025b)
+            - So looks like assistant professor, poor guys, are often getting paid quite a lot less than the prevailing wage.
+            - Attorneys, not so much.
+            - Teachers, that happens quite often.
+            - And it looks like,, just to our eye, that this is happening a bunch to business analysts and software engineers, but not quite so much to data scientists or data analysts.
+            - **Now, one question we might have at this point is whether ** 
+                - all of these points are coming from the same company？
+                - Are there some companies that are consistently and systematically paying less than the prevailing wage？
+                - or are these all just kind of flukes and every company does it once or twice?
+            - **解决思路**
+                - ![](https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2FFemFarm%2FUoHOBw6sUT.png?alt=media&token=c1928e7c-07ec-4737-ae8e-4d149d77ce0c)
+                - **Are there some companies that are consistently and systematically paying less than the prevailing wage?**
+                    - Job title选中ALL，Difference between Prevailing and Paid wage filter greater than 5, 看整体的公司情况，发现几家公司有consistently paying less.
+                - **In which job title group?**
+                    - 想知道哪个data-related job group遇到less wage的情况较多，filter选中每个group分别查看，发现less wages情况只出现在soft engineer上，可怜
+    - ## Jonin
+        - In Tableau speak, this means that when you blend, the smaller dataset with the more coarse level of granularity should be the primary data source, and the larger data set with the more detailed level of granularity should be the secondary data source. This also has some consequences. You will never be able to use a blended field at a level of granularity that is smaller than that of the smallest table of data you are combining.
+    - ## Sort the data within each subcategory
+        - ### Table Calculation
+            - 想要每个subgroup bar chat sorted by "Adjusted Paid Wage", 首先把它拖动到^^Detail^^，然后右键^^Create Table Calculation^^
+            - ![](https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2FFemFarm%2FU6ixkDP2PN.png?alt=media&token=c244ea5b-cfcc-43d3-8e8e-cd9f993e7f52)
+            - #make:wide ![](https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2FFemFarm%2FlqYG8U5qa3.png?alt=media&token=3844eaa0-bb0e-4e22-b555-fd0672175cbb)
+            - Tableau didn't seem to sort the data within each subcategory. Instead, it seemed to be sorting in some way across the entire table. And the way I said that should give you an idea of why table calculations might be useful here.**Basically, Tableau doesn't have any way to sort, based on the stuff that's inside the visualization.** We have to make a calculation to tell it what's inside the visualization or what's inside the workspace, and then tell it what to do with those fields that are in the workspace. 
+            - So, our goal is going to be to make a calculated field that's going to have a rank of the work state as it relates to job title subgroup. And the only way we can do that again is by having job title subgroup in our work space already. To do this, every time you make a calculation within the workspace it will actually take the variable you were working with and just turn it into the calculation. So if you wanna keep the data in the workspace you'd actually have to copy the pill and then make the calculation on that duplicated pill. So to do that you can press the Apple key or Control and bring the pill over to the detail. And you can see it just duplicated the adjusted paid wage pill that we had here. So now on this one I want you to right click And go to add table calculation. And you'll see that it gives you a bunch of different calculation types and you can play around with all of these and you can look them up. We're going to use rank.
+        - ### Parameters
+            - ### How to show 5 top states for every job title group?
+                - Set a new parameter `Top X`
+
+                    - ![](https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2FFemFarm%2FDH_E8sA6oE.png?alt=media&token=49b9ff2c-3eef-4a29-95d2-1b5132bb9330)
+                - Create a calculated logical field `In Top X?`
+                    - ![](https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2FFemFarm%2FSgRrfraPdU.png?alt=media&token=f434434a-61b2-4f7c-b41f-86607e1ab53e)
+                - ![](https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2FFemFarm%2FhcWXUpUK2N.png?alt=media&token=a79b15be-9c8c-488d-a16c-54d4288f807a)
+        - ### Dashboard - Actions
+            - ### Add filters
+                - ![](https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2FFemFarm%2F3H0swDLx9l.png?alt=media&token=8af0573c-2eec-4689-9c33-d7b8c2becdaa)
+                - ![](https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2FFemFarm%2FMWhUQ6A-in.17.28%202.gif?alt=media&token=431dcaf6-12e0-48bf-8d10-071c8c68c705)
+                - Add count which tells you how many records are involved in each bar. So that should tell you **how much confidence you should have in whether these Salaries are representative**
+                - ![](https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2FFemFarm%2F0tJzmhCu7r.png?alt=media&token=8251559b-fc40-4e04-a74c-16dbe38e18bf)
